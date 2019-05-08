@@ -146,4 +146,4 @@ const IronMan = new Hero(new Date(), 'IronMan', { length: 2, width: 3, height: 6
 const Kito = new Villain(new Date(), 'Kito', { length: 2, width: 1, height: 5 }, 30, 'Katara Shoves', ['Seckani', 'Kaslr', 'Shield'], 'Dothraki')
 
 console.log(IronMan.removeHealth(1, 'light'));
-console.log(Kito.removeHealth(3, 'heavy') )
+console.log(Kito.removeHealth(3, 'heavy'))
