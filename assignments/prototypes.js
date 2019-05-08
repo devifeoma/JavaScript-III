@@ -128,7 +128,7 @@ Hero.prototype = Object.create(Humanoid.prototype)
 Hero.prototype.removeHealth = function (amount, note) {
   // this.healthPoints = this.healthPoints - amount;
   this.healthPoints -= amount;
-  return `${this.name} lost ${note} ${healthPoints}.`
+  return `${this.name} lost ${note} health. Health is now ${this.healthPoints}.`
 }
 
 function Villain(createdAt, name, dimensions, healthPoints, team, weapons, language) {
@@ -139,10 +139,11 @@ Villain.prototype.removeHealth = function (amount, note) {
   // this.healthPoints = this.healthPoints - amount;
   this.healthPoints -= amount;
   // console.log(this)
-  return `${this.name} lost ${note} ${healthPoints}.`
+  return `${this.name} lost ${note} health. Health is now ${this.healthPoints}.`
 }
 
 const IronMan = new Hero(new Date(), 'IronMan', { length: 2, width: 3, height: 6 }, 30, 'Avengers', ['Iron Hammer', 'Shield', 'Bomb-N'], 'Human language')
 const Kito = new Villain(new Date(), 'Kito', { length: 2, width: 1, height: 5 }, 30, 'Katara Shoves', ['Seckani', 'Kaslr', 'Shield'], 'Dothraki')
 
-console.log(IronMan.removeHealth(1));
+console.log(IronMan.removeHealth(1, 'light'));
+console.log(Kito.removeHealth(3, 'heavy') )
