@@ -125,9 +125,15 @@ function Hero(createdAt, name, dimensions, healthPoints, team, weapons, language
   // console.log(this);
 }
 Hero.prototype = Object.create(Humanoid.prototype)
+Hero.prototype.die = function () {
+  return `${this.name} is dead!!`
+}
 Hero.prototype.removeHealth = function (amount, note) {
   // this.healthPoints = this.healthPoints - amount;
   this.healthPoints -= amount;
+  if (this.healthPoints <= 0) {
+    return this.die()
+  }
   return `${this.name} lost ${note} health. Health is now ${this.healthPoints}.`
 }
 
@@ -135,15 +141,31 @@ function Villain(createdAt, name, dimensions, healthPoints, team, weapons, langu
   Humanoid.call(this, createdAt, name, dimensions, healthPoints, team, weapons, language)
 }
 Villain.prototype = Object.create(Humanoid.prototype)
+Villain.prototype.die = function () {
+  return `${this.name} is dead!!`
+}
 Villain.prototype.removeHealth = function (amount, note) {
   // this.healthPoints = this.healthPoints - amount;
   this.healthPoints -= amount;
+  if (this.healthPoints <= 0) {
+    return this.die()
+  }
   // console.log(this)
   return `${this.name} lost ${note} health. Health is now ${this.healthPoints}.`
 }
 
+
 const IronMan = new Hero(new Date(), 'IronMan', { length: 2, width: 3, height: 6 }, 30, 'Avengers', ['Iron Hammer', 'Shield', 'Bomb-N'], 'Human language')
 const Kito = new Villain(new Date(), 'Kito', { length: 2, width: 1, height: 5 }, 30, 'Katara Shoves', ['Seckani', 'Kaslr', 'Shield'], 'Dothraki')
 
+// Last Fight!!!
+
 console.log(IronMan.removeHealth(1, 'light'));
-console.log(Kito.removeHealth(3, 'heavy'))
+console.log(Kito.removeHealth(3, 'Heavy'));
+console.log(IronMan.removeHealth(3, 'Heavy'));
+console.log(Kito.removeHealth(5, 'Massive'));
+console.log(IronMan.removeHealth(3, 'Heavy'));
+console.log(Kito.removeHealth(4, 'Massive'));
+console.log(IronMan.removeHealth(6, 'Massive'));
+console.log(Kito.removeHealth(14, 'Fatal'));
+console.log(Kito.removeHealth(5, 'Finish Him'));
